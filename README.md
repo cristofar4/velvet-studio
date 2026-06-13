@@ -1,8 +1,8 @@
-# Velvet Fade Studio
+# Crown & Blade
 
-> Precision Cuts. Timeless Style.
+> The art of precision grooming.
 
-A cinematic, luxury-grade website for a premium barbershop — dark editorial design with gold & silver accents, glassmorphism, real barbershop film and photography, and motion design throughout. Built as a portfolio-quality, production-ready single page experience.
+An Awwwards‑grade, cinematic website for a fictional luxury barbershop atelier. Obsidian‑and‑bone editorial design with a single razor‑crimson accent, a real WebGL hero, a pinned horizontal gallery, and one continuous scroll‑driven journey.
 
 ## Stack
 
@@ -10,24 +10,25 @@ A cinematic, luxury-grade website for a premium barbershop — dark editorial de
 | --- | --- |
 | Framework | Next.js 16 (App Router, Turbopack) |
 | Language | TypeScript (strict) |
-| Styling | Tailwind CSS v4 (CSS-first tokens in `app/globals.css`) |
-| Motion | Framer Motion (in-view choreography, carousel, modals) + GSAP ScrollTrigger (scroll-driven parallax) |
-| Scrolling | Lenis smooth scrolling, synced to GSAP's ticker |
-| Type | Playfair Display (display serif) + Manrope (grotesque) via `next/font` |
+| Styling | Tailwind CSS v4 (CSS‑first tokens in `app/globals.css`) |
+| 3D | Three.js + React Three Fiber + drei (in‑scene Lightformers, no external HDR) |
+| Motion | GSAP + ScrollTrigger (scroll choreography, pinned horizontal scroll) and Framer Motion (transitions, carousels, modals) |
+| Scrolling | Lenis smooth scroll, synced to GSAP's ticker |
+| UI | Shadcn‑style components (cva + Radix Dialog) |
+| Type | Bodoni Moda (display) · Manrope (sans) · JetBrains Mono (labels) |
 
-## Experience map
+## Signature moments
 
-- **Preloader** — brand letters, gold hairline sweep, 0→100 counter, curtain exit gating the hero choreography.
-- **Hero** — full-screen barbershop film (cottonbro studio via Pexels) with layered gradients, film grain, word-by-word headline reveal, parallax on scrub, glowing magnetic CTAs, and a glass statistics shelf with count-up numbers.
-- **Marquee** — infinite editorial ticker.
-- **The House (About)** — split layout, dual parallax imagery, rotating "Est. 2012" badge, numbered pillars, pull-quote.
-- **Services** — five ritual cards with pointer-tracked 3D tilt, cursor sheen, hover glow, and a wide "Most Coveted" VIP card.
-- **Masters** — four barber portraits: grayscale→color hover, rising veil, specialty tags, social links, staggered entrances.
-- **Gallery** — masonry archive with zoom-on-hover captions and a keyboard-navigable lightbox.
-- **Reviews** — draggable, auto-advancing testimonial carousel with animated star ratings.
-- **Booking** — glass reservation form with live validation, shake-on-error, time-slot chips, ambient film panel, and a confirmation modal with an animated gold check.
-- **Footer** — outline wordmark, hours, socials, newsletter signup, magnetic back-to-top.
-- **Micro-interactions** — bespoke two-part cursor with contextual labels, magnetic buttons, click ripples, hover glows. All gated behind `pointer: fine` and `prefers-reduced-motion`.
+- **Preloader** — the wordmark assembles, a crimson edge sweeps, a counter runs to 100, then two panels part to reveal the hero.
+- **Hero** — cinematic barbershop video graded to obsidian, a **real‑time WebGL blade fan** (polished steel lit by in‑scene light cards, crimson edge, pointer‑reactive) dynamically loaded with the video as graceful fallback, kinetic split‑word headline, parallax on scroll.
+- **About** — an oversized lead line, a GSAP clip‑path image reveal that wipes open from the floor, dual‑speed parallax frames, numbered pillars.
+- **Services** — an interactive index: hover a ritual and a large cinematic preview morphs with a clip reveal while the row expands. Reinvented from a card grid.
+- **Gallery** — a **pinned horizontal‑scroll campaign**: the section pins and pans through editorial frames as you scroll, with a keyboard‑navigable lightbox. Native snap‑scroll on mobile.
+- **Team** — a cast list where a portrait follows the cursor and swaps per artist, names sliding on hover; tilt cards on mobile.
+- **Booking** — a validated glass form (shake on error, time‑slot chips) with a **Shadcn Dialog** confirmation and an animated crimson check.
+- **Testimonials** — a draggable, auto‑advancing carousel that turns through 3D space, with animated star ratings.
+- **Contact** — editorial footer: address, hours, newsletter, socials, and a giant outline wordmark.
+- **Micro‑interactions** — bespoke two‑part cursor with contextual labels, magnetic buttons, ink ripples, all gated behind `pointer: fine` and `prefers-reduced-motion`.
 
 ## Getting started
 
@@ -44,18 +45,20 @@ npm start        # serve the build
 app/                  layout (fonts, metadata, providers), page, theme tokens
 components/
   providers/          Lenis smooth-scroll context · intro/preloader gate
-  fx/                 Cursor · Magnetic · Reveal/SplitWords · CountUp · Marquee · TiltCard
-  ui/                 Buttons (ripple/glow/magnetic) · SectionHeading
-  layout/             Preloader · Navbar · Footer
-  sections/           Hero · About · Services · Barbers · Gallery · Testimonials · Booking
-lib/                  site data & Pexels media helpers
+  three/              BladeScene — the React Three Fiber hero object
+  fx/                 Cursor · Magnetic · Reveal/SplitWords · CountUp · TiltCard · Marquee
+  ui/                 Button (cva CTA) · dialog (Radix) · SectionHeading
+  layout/             Preloader · Navbar
+  sections/           Hero · About · Services · Gallery · Team · Booking · Testimonials · Contact
+lib/                  brand data & Pexels media helpers
 ```
 
 ## Media
 
-All photography and footage is royalty-free from [Pexels](https://www.pexels.com) (notably cottonbro studio and RDNE Stock project), hotlinked through the Pexels CDN — no placeholders. Swap any asset in `lib/data.ts`.
+All photography and footage is royalty‑free from [Pexels](https://www.pexels.com) (notably cottonbro studio and RDNE Stock project), hotlinked through the Pexels CDN — every asset is unique, no placeholders. Swap any asset in `lib/data.ts`.
 
 ## Notes
 
-- The booking flow is a front-end simulation (no backend); wire `components/sections/Booking.tsx` to your scheduler of choice.
-- Structured data (`BarberShop` JSON-LD), Open Graph and Twitter cards are configured in `app/layout.tsx` / `app/page.tsx`.
+- The WebGL hero degrades gracefully: it is client‑only (`ssr: false`) and the graded hero video sits behind it, so the hero is unforgettable even without WebGL.
+- The booking flow is a front‑end simulation; wire `components/sections/Booking.tsx` to your scheduler of choice.
+- `HairSalon` JSON‑LD, Open Graph and Twitter cards are configured in `app/layout.tsx` / `app/page.tsx`.

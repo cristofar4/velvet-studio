@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { Bodoni_Moda, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { IntroProvider } from "@/components/providers/Intro";
 import SmoothScroll from "@/components/providers/SmoothScroll";
@@ -8,77 +8,49 @@ import Preloader from "@/components/layout/Preloader";
 import Navbar from "@/components/layout/Navbar";
 import { pexels } from "@/lib/utils";
 
-const playfair = Playfair_Display({
+const bodoni = Bodoni_Moda({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  variable: "--font-playfair",
+  variable: "--font-bodoni",
   display: "swap",
 });
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
-});
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://velvetfade.studio"),
+  metadataBase: new URL("https://crownandblade.co"),
   title: {
-    default: "Velvet Fade Studio · Precision Cuts. Timeless Style.",
-    template: "%s · Velvet Fade Studio",
+    default: "Crown & Blade · The Art of Precision Grooming",
+    template: "%s · Crown & Blade",
   },
   description:
-    "Luxury grooming atelier in SoHo, New York. Signature fades, hot towel shaves, beard sculpting and VIP rituals by master barbers. Est. 2012.",
-  keywords: [
-    "barbershop",
-    "luxury barber",
-    "SoHo barbershop",
-    "fade haircut",
-    "hot towel shave",
-    "beard sculpting",
-    "New York grooming",
-  ],
+    "An atelier of precision grooming in the West Village, New York. Master barbers, rare instruments, signature fades, royal shaves and the Full Crown. Est. 2014.",
+  keywords: ["luxury barbershop", "New York barber", "West Village grooming", "fade haircut", "royal shave", "beard sculpture", "Crown and Blade"],
   openGraph: {
     type: "website",
-    title: "Velvet Fade Studio · Precision Cuts. Timeless Style.",
-    description:
-      "Luxury grooming atelier in SoHo, New York. Master barbers, hot towel rituals, and a chair you will not want to leave.",
+    title: "Crown & Blade · The Art of Precision Grooming",
+    description: "An atelier of precision grooming in the West Village, New York. Master barbers, rare instruments, the quiet theatre of transformation.",
     url: "/",
-    siteName: "Velvet Fade Studio",
-    images: [
-      {
-        url: pexels(8218487, 1600),
-        width: 1600,
-        height: 1067,
-        alt: "Inside Velvet Fade Studio with leather chairs and warm brass light",
-      },
-    ],
+    siteName: "Crown & Blade",
+    images: [{ url: pexels(8218487, 1600), width: 1600, height: 1067, alt: "Inside the Crown & Blade atelier" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Velvet Fade Studio · Precision Cuts. Timeless Style.",
-    description:
-      "Luxury grooming atelier in SoHo, New York. Est. 2012.",
+    title: "Crown & Blade · The Art of Precision Grooming",
+    description: "An atelier of precision grooming in the West Village, New York. Est. 2014.",
     images: [pexels(8218487, 1600)],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#060607",
+  themeColor: "#08080a",
   colorScheme: "dark",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${playfair.variable} ${manrope.variable} antialiased`}
-    >
-      <body className="bg-night text-cream">
+    <html lang="en" className={`${bodoni.variable} ${manrope.variable} ${mono.variable} antialiased`}>
+      <body className="bg-obsidian text-bone">
         <IntroProvider>
           <SmoothScroll>
             <Preloader />
