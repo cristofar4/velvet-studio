@@ -2,13 +2,7 @@
 
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  Environment,
-  Lightformer,
-  RoundedBox,
-  ContactShadows,
-  AdaptiveDpr,
-} from "@react-three/drei";
+import { Environment, Lightformer, RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
 import { useReducedMotion } from "framer-motion";
 
@@ -81,15 +75,6 @@ function Scene({ calm }: { calm: boolean }) {
 
       <BladeFan calm={calm} />
 
-      <ContactShadows
-        position={[0, -2.1, 0]}
-        opacity={0.5}
-        scale={9}
-        blur={2.6}
-        far={4}
-        color="#000000"
-      />
-
       {/* a small studio of light cards baked once for chrome reflections */}
       <Environment frames={1} resolution={256}>
         <Lightformer intensity={3} position={[0, 3, 2]} scale={[6, 2, 1]} color="#ffffff" />
@@ -97,8 +82,6 @@ function Scene({ calm }: { calm: boolean }) {
         <Lightformer intensity={2} position={[4, -1, 2]} scale={[3, 3, 1]} color="#ffffff" />
         <Lightformer intensity={1.6} position={[0, -3, -2]} scale={[6, 3, 1]} color="#7a0c14" />
       </Environment>
-
-      <AdaptiveDpr pixelated />
     </>
   );
 }

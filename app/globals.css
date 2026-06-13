@@ -190,6 +190,17 @@ html.lenis, html.lenis body { height: auto; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* cinematic edge vignette, a soft constant key light from above */
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background:
+    radial-gradient(125% 125% at 50% 42%, transparent 64%, rgba(6, 6, 8, 0.55) 100%),
+    radial-gradient(80% 60% at 50% -10%, rgba(241, 236, 226, 0.05), transparent 60%);
+}
+
 /* razor hairline */
 .edge {
   height: 1px;
