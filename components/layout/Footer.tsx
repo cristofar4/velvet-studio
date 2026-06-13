@@ -132,7 +132,7 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <h3 className="eyebrow">The Sharp List</h3>
               <p className="text-sm leading-relaxed text-fog">
-                One email a month — open chairs, style notes, and first call on
+                One email a month, open chairs, style notes, and first call on
                 limited VIP slots.
               </p>
               {joined ? (
@@ -190,7 +190,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Velvet Fade Studio · Crafted in SoHo
           </p>
           <p className="text-xs tracking-wide text-mist">
-            Photography & film via Pexels artists — with thanks.
+            Photography and film via Pexels artists, with thanks.
           </p>
           <Magnetic>
             <button

@@ -24,8 +24,8 @@ function Stars({ rating }: { rating: number }) {
           >
             <defs>
               <linearGradient id={`star-${i}-${fill}`}>
-                <stop offset={`${fill * 100}%`} stopColor="#c8a05f" />
-                <stop offset={`${fill * 100}%`} stopColor="rgba(243,240,233,0.18)" />
+                <stop offset={`${fill * 100}%`} stopColor="#d3b178" />
+                <stop offset={`${fill * 100}%`} stopColor="rgba(244,242,236,0.18)" />
               </linearGradient>
             </defs>
             <path
@@ -90,15 +90,16 @@ export default function Testimonials() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="relative min-h-[380px] sm:min-h-[330px]">
+          <div className="perspective-deep relative min-h-[380px] sm:min-h-[330px]">
             <AnimatePresence custom={direction} mode="popLayout">
               <motion.blockquote
                 key={index}
                 custom={direction}
-                initial={{ opacity: 0, x: direction * 90, filter: "blur(8px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, x: direction * -90, filter: "blur(8px)" }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, x: direction * 80, rotateY: direction * 26, filter: "blur(8px)" }}
+                animate={{ opacity: 1, x: 0, rotateY: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, x: direction * -80, rotateY: direction * -26, filter: "blur(8px)" }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                style={{ transformStyle: "preserve-3d" }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.6}

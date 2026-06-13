@@ -24,11 +24,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://velvetfade.studio"),
   title: {
-    default: "Velvet Fade Studio — Precision Cuts. Timeless Style.",
+    default: "Velvet Fade Studio · Precision Cuts. Timeless Style.",
     template: "%s · Velvet Fade Studio",
   },
   description:
-    "Luxury grooming atelier in SoHo, New York. Signature fades, hot-towel shaves, beard sculpting and VIP rituals by master barbers. Est. 2012.",
+    "Luxury grooming atelier in SoHo, New York. Signature fades, hot towel shaves, beard sculpting and VIP rituals by master barbers. Est. 2012.",
   keywords: [
     "barbershop",
     "luxury barber",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Velvet Fade Studio — Precision Cuts. Timeless Style.",
+    title: "Velvet Fade Studio · Precision Cuts. Timeless Style.",
     description:
-      "Luxury grooming atelier in SoHo, New York. Master barbers, hot-towel rituals, and a chair you will not want to leave.",
+      "Luxury grooming atelier in SoHo, New York. Master barbers, hot towel rituals, and a chair you will not want to leave.",
     url: "/",
     siteName: "Velvet Fade Studio",
     images: [
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
         url: pexels(8218487, 1600),
         width: 1600,
         height: 1067,
-        alt: "Inside Velvet Fade Studio — leather chairs and warm brass light",
+        alt: "Inside Velvet Fade Studio with leather chairs and warm brass light",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Velvet Fade Studio — Precision Cuts. Timeless Style.",
+    title: "Velvet Fade Studio · Precision Cuts. Timeless Style.",
     description:
       "Luxury grooming atelier in SoHo, New York. Est. 2012.",
     images: [pexels(8218487, 1600)],
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0c",
+  themeColor: "#07080b",
   colorScheme: "dark",
 };
 
@@ -78,7 +78,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${manrope.variable} antialiased`}
     >
-      <body className="grain bg-night text-cream">
+      <body className="bg-night text-cream">
         <IntroProvider>
           <SmoothScroll>
             <Preloader />

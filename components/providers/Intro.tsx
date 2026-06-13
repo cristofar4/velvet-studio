@@ -9,7 +9,7 @@ import {
 } from "react";
 
 type IntroState = {
-  /** True once the preloader has fully exited — hero choreography keys off this. */
+  /** True once the preloader has fully exited, hero choreography keys off this. */
   done: boolean;
   finish: () => void;
 };

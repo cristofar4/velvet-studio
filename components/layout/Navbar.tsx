@@ -77,7 +77,7 @@ export default function Navbar() {
           <button
             onClick={() => goTo("#home")}
             className="group flex items-baseline gap-2"
-            aria-label="Velvet Fade Studio — back to top"
+            aria-label="Velvet Fade Studio, back to top"
           >
             <span className="font-display text-xl italic text-cream transition-colors duration-300 group-hover:text-champagne sm:text-2xl">
               Velvet&nbsp;Fade

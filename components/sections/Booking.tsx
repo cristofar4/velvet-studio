@@ -153,8 +153,8 @@ function SuccessModal({
             />
             <defs>
               <linearGradient id="ring-gold" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#ecd9a8" />
-                <stop offset="100%" stopColor="#96713a" />
+                <stop offset="0%" stopColor="#f1e3bf" />
+                <stop offset="100%" stopColor="#b18d57" />
               </linearGradient>
             </defs>
           </motion.svg>
@@ -162,7 +162,7 @@ function SuccessModal({
             <motion.path
               d="M6 19l8 8L30 9"
               fill="none"
-              stroke="#ecd9a8"
+              stroke="#f1e3bf"
               strokeWidth="2.6"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -291,7 +291,7 @@ export default function Booking() {
           <Reveal delay={0.15}>
             <p className="mt-6 max-w-md leading-relaxed text-fog">
               Choose your ritual, your master, and your hour. We hold every
-              reservation with a hot towel waiting — arrive five minutes early
+              reservation with a hot towel waiting, arrive five minutes early
               and leave the rest to us.
             </p>
           </Reveal>
@@ -388,7 +388,7 @@ export default function Booking() {
                     </option>
                     {services.map((s) => (
                       <option key={s.id} value={s.id} className="bg-onyx text-cream">
-                        {s.name} — from ${s.price}
+                        {s.name}, from ${s.price}
                       </option>
                     ))}
                   </select>
@@ -459,7 +459,7 @@ export default function Booking() {
               </div>
             </Field>
 
-            <Field label="Notes — optional">
+            <Field label="Notes, optional">
               <textarea
                 value={form.notes}
                 onChange={(e) => set("notes")(e.target.value)}
@@ -489,7 +489,7 @@ export default function Booking() {
               )}
             </Button>
             <p className="-mt-2 text-center text-[11px] tracking-wide text-mist">
-              No payment today — settle in the lounge, cancel anytime up to 12h before.
+              No payment today, settle in the lounge, cancel anytime up to 12h before.
             </p>
           </motion.form>
         </Reveal>

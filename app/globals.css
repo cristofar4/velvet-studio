@@ -2,33 +2,34 @@
 
 /* ─────────────────────────────────────────────────────────────
    Velvet Fade Studio — design tokens
-   Dark, cinematic, gold & silver. Tailwind v4 CSS-first config.
+   Dark, cinematic, champagne gold & platinum silver.
+   Tailwind v4 CSS-first config: recolor the brand here, once.
    ───────────────────────────────────────────────────────────── */
 
 @theme {
   /* surfaces */
-  --color-night: #0a0a0c;
-  --color-coal: #0f0f13;
-  --color-onyx: #15151b;
-  --color-graphite: #1d1d25;
+  --color-night: #07080b;
+  --color-coal: #0c0d11;
+  --color-onyx: #12131a;
+  --color-graphite: #1a1c25;
 
   /* metals */
-  --color-gold: #c8a05f;
-  --color-champagne: #ecd9a8;
-  --color-bronze: #96713a;
-  --color-silver: #c9cbd4;
+  --color-gold: #d3b178;
+  --color-champagne: #f1e3bf;
+  --color-bronze: #b18d57;
+  --color-silver: #d8dae2;
 
   /* type */
-  --color-cream: #f3f0e9;
-  --color-fog: #a8aab4;
-  --color-mist: #6e7078;
+  --color-cream: #f4f2ec;
+  --color-fog: #a9adb8;
+  --color-mist: #71757f;
 
   /* hairlines */
-  --color-line: rgba(243, 240, 233, 0.08);
-  --color-line-gold: rgba(200, 160, 95, 0.28);
+  --color-line: rgba(244, 242, 236, 0.08);
+  --color-line-gold: rgba(211, 177, 120, 0.3);
 
-  --shadow-glow-gold: 0 0 24px rgba(200, 160, 95, 0.35),
-    0 0 64px rgba(200, 160, 95, 0.18);
+  --shadow-glow-gold: 0 0 24px rgba(211, 177, 120, 0.32),
+    0 0 64px rgba(211, 177, 120, 0.16);
   --shadow-card: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
 
   --ease-velvet: cubic-bezier(0.22, 1, 0.36, 1);
@@ -50,12 +51,12 @@
   @keyframes pulse-glow {
     0%,
     100% {
-      box-shadow: 0 0 18px rgba(200, 160, 95, 0.28),
-        0 0 48px rgba(200, 160, 95, 0.12);
+      box-shadow: 0 0 18px rgba(211, 177, 120, 0.26),
+        0 0 48px rgba(211, 177, 120, 0.11);
     }
     50% {
-      box-shadow: 0 0 30px rgba(200, 160, 95, 0.5),
-        0 0 90px rgba(200, 160, 95, 0.22);
+      box-shadow: 0 0 30px rgba(211, 177, 120, 0.46),
+        0 0 90px rgba(211, 177, 120, 0.2);
     }
   }
 
@@ -90,20 +91,26 @@ body {
 }
 
 ::selection {
-  background: rgba(200, 160, 95, 0.85);
-  color: #0a0a0c;
+  background: rgba(211, 177, 120, 0.85);
+  color: #07080b;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(211, 177, 120, 0.7);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0c;
+  background: #07080b;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #96713a, #c8a05f);
+  background: linear-gradient(180deg, #b18d57, #d3b178);
   border-radius: 8px;
-  border: 2px solid #0a0a0c;
+  border: 2px solid #07080b;
 }
 
 /* Lenis recommended styles */
@@ -124,26 +131,26 @@ html.lenis body {
 /* ── bespoke utilities ── */
 
 @utility glass {
-  background: rgba(21, 21, 27, 0.55);
+  background: rgba(18, 19, 26, 0.55);
   backdrop-filter: blur(18px) saturate(1.3);
   -webkit-backdrop-filter: blur(18px) saturate(1.3);
-  border: 1px solid rgba(243, 240, 233, 0.08);
+  border: 1px solid rgba(244, 242, 236, 0.08);
 }
 
 @utility glass-deep {
-  background: rgba(10, 10, 12, 0.72);
+  background: rgba(7, 8, 11, 0.72);
   backdrop-filter: blur(22px) saturate(1.4);
   -webkit-backdrop-filter: blur(22px) saturate(1.4);
-  border: 1px solid rgba(243, 240, 233, 0.07);
+  border: 1px solid rgba(244, 242, 236, 0.07);
 }
 
 @utility text-gold-gradient {
   background-image: linear-gradient(
     100deg,
-    #ecd9a8 0%,
-    #c8a05f 38%,
-    #96713a 62%,
-    #e6cf9b 100%
+    #f1e3bf 0%,
+    #d3b178 38%,
+    #b18d57 62%,
+    #ecdcae 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -151,14 +158,14 @@ html.lenis body {
 }
 
 @utility text-silver-gradient {
-  background-image: linear-gradient(100deg, #f4f5f8, #c9cbd4 45%, #84868f);
+  background-image: linear-gradient(100deg, #f6f7fa, #d8dae2 45%, #8b8e98);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 @utility text-outline {
-  -webkit-text-stroke: 1px rgba(243, 240, 233, 0.16);
+  -webkit-text-stroke: 1px rgba(244, 242, 236, 0.16);
   color: transparent;
 }
 
@@ -174,51 +181,23 @@ html.lenis body {
 @utility card-sheen {
   background-image: radial-gradient(
     480px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(236, 217, 168, 0.1),
+    rgba(241, 227, 191, 0.1),
     transparent 42%
   );
 }
 
-/* ── film grain overlay ── */
-
-.grain::after {
-  content: "";
-  position: fixed;
-  inset: -200%;
-  z-index: 120;
-  pointer-events: none;
-  width: 400%;
-  height: 400%;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain-shift 0.9s steps(4) infinite;
+/* true 3D helpers for flip cards & tilt depth */
+@utility perspective-deep {
+  perspective: 1300px;
 }
 
-@keyframes grain-shift {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(-2%, 1.4%);
-  }
-  50% {
-    transform: translate(1.6%, -1%);
-  }
-  75% {
-    transform: translate(-1%, 2%);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
+@utility preserve-3d {
+  transform-style: preserve-3d;
 }
 
-/* ── custom cursor ── */
-
-@media (pointer: fine) {
-  .cursor-none-everywhere,
-  .cursor-none-everywhere * {
-    cursor: none !important;
-  }
+@utility backface-hide {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* ── ripple ── */
@@ -229,8 +208,8 @@ html.lenis body {
   pointer-events: none;
   background: radial-gradient(
     circle,
-    rgba(236, 217, 168, 0.55) 0%,
-    rgba(200, 160, 95, 0.25) 45%,
+    rgba(241, 227, 191, 0.55) 0%,
+    rgba(211, 177, 120, 0.25) 45%,
     transparent 70%
   );
   transform: scale(0);
@@ -250,7 +229,7 @@ html.lenis body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(200, 160, 95, 0.55),
+    rgba(211, 177, 120, 0.55),
     transparent
   );
 }
@@ -261,10 +240,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .grain::after {
-    animation: none;
+@media (pointer: fine) {
+  .cursor-none-everywhere,
+  .cursor-none-everywhere * {
+    cursor: none !important;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {

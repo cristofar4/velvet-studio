@@ -39,12 +39,25 @@ function SinceBadge() {
 export default function About() {
   const calm = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
+  const revealRef = useRef<HTMLDivElement>(null);
   const primaryRef = useRef<HTMLDivElement>(null);
   const secondaryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (calm) return;
     const ctx = gsap.context(() => {
+      // cinematic clip reveal: the lead frame wipes open from the floor up
+      gsap.fromTo(
+        revealRef.current,
+        { clipPath: "inset(0 0 100% 0)" },
+        {
+          clipPath: "inset(0 0 0% 0)",
+          duration: 1.4,
+          ease: "power3.out",
+          scrollTrigger: { trigger: revealRef.current, start: "top 82%" },
+        }
+      );
+      // dual-speed parallax between the two frames
       gsap.fromTo(
         primaryRef.current,
         { yPercent: -7 },
@@ -86,20 +99,24 @@ export default function About() {
         {/* imagery */}
         <div className="relative lg:col-span-6">
           <SinceBadge />
-          <Reveal className="relative">
-            <div className="relative overflow-hidden rounded-3xl border border-line shadow-card">
+          <div className="relative">
+            <div
+              ref={revealRef}
+              className="relative overflow-hidden rounded-3xl border border-line shadow-card"
+            >
               <div ref={primaryRef} className="relative aspect-[4/5] scale-[1.16] will-change-transform">
                 <Image
                   src={about.imagePrimary.src}
                   alt={about.imagePrimary.alt}
                   fill
+                  quality={90}
                   sizes="(min-width: 1024px) 44vw, 92vw"
                   className="object-cover"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-night/55 via-transparent to-night/15" />
             </div>
-          </Reveal>
+          </div>
 
           <Reveal
             delay={0.2}
@@ -111,6 +128,7 @@ export default function About() {
                   src={about.imageSecondary.src}
                   alt={about.imageSecondary.alt}
                   fill
+                  quality={90}
                   sizes="(min-width: 1024px) 20vw, 42vw"
                   className="object-cover"
                 />
@@ -169,7 +187,7 @@ export default function About() {
                 “{about.quote}”
               </p>
               <cite className="eyebrow mt-3 block text-mist! not-italic">
-                — {about.quoteBy}
+                {about.quoteBy}
               </cite>
             </blockquote>
           </Reveal>

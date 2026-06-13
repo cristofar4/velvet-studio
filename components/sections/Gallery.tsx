@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLenis } from "@/components/providers/SmoothScroll";
 import SectionHeading from "@/components/ui/SectionHeading";
+import TiltCard from "@/components/fx/TiltCard";
 import { Reveal } from "@/components/fx/Reveal";
 import { gallery } from "@/lib/data";
 import { cn } from "@/lib/utils";
@@ -49,7 +50,7 @@ function Lightbox({
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label={`${item.caption} — gallery viewer`}
+      aria-label={`${item.caption}, gallery viewer`}
     >
       {/* frame */}
       <motion.figure
@@ -134,24 +135,28 @@ export default function Gallery() {
           eyebrow="The Archive"
           title="Proof, framed in light"
           goldWord={1}
-          copy="Shot on the studio floor between appointments — no retouching, just sharp lines and warm tungsten."
+          copy="Shot on the studio floor between appointments, no retouching, just sharp lines and warm tungsten."
         />
 
         <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [column-fill:_balance]">
           {gallery.map((item, i) => (
             <Reveal key={item.src} delay={(i % 3) * 0.08} className="mb-5 break-inside-avoid">
-              <figure
+              <TiltCard
+                maxTilt={6}
+                role="button"
+                aria-label={`Open ${item.caption} in viewer`}
+                data-cursor="View"
+                onClick={() => setOpen(i)}
                 className={cn(
-                  "group relative cursor-pointer overflow-hidden rounded-2xl border border-line",
+                  "group relative block cursor-pointer overflow-hidden rounded-2xl border border-line transition-colors duration-500 hover:border-gold/40",
                   item.ratio
                 )}
-                onClick={() => setOpen(i)}
-                data-cursor="View"
               >
                 <Image
                   src={item.src}
                   alt={item.alt}
                   fill
+                  quality={88}
                   sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
                   className="object-cover transition-transform duration-[1.3s] ease-out group-hover:scale-110"
                 />
@@ -166,7 +171,7 @@ export default function Gallery() {
                     </svg>
                   </span>
                 </figcaption>
-              </figure>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

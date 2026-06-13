@@ -98,7 +98,7 @@ export function Button({
   return magnetic ? <Magnetic>{button}</Magnetic> : button;
 }
 
-/** Slim arrow used inside CTAs — slides on hover. */
+/** Slim arrow used inside CTAs, slides on hover. */
 export function ArrowIcon({ className }: { className?: string }) {
   return (
     <svg

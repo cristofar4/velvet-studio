@@ -15,7 +15,7 @@ const jsonLd = {
   "@type": "BarberShop",
   name: site.name,
   description:
-    "Luxury grooming atelier in SoHo, New York — signature fades, hot-towel shaves and VIP rituals.",
+    "Luxury grooming atelier in SoHo, New York, signature fades, hot towel shaves and VIP rituals.",
   url: "https://velvetfade.studio",
   telephone: site.phone,
   priceRange: "$$",

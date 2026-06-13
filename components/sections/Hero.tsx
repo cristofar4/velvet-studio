@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useReducedMotion,
+} from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useIntro } from "@/components/providers/Intro";
@@ -34,7 +39,27 @@ export default function Hero() {
   const mediaRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  /* cinematic parallax: footage sinks & swells, copy drifts up */
+  /* pointer-driven 3D depth: the headline plane tilts toward the cursor */
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const rotateY = useSpring(px, { stiffness: 120, damping: 20 });
+  const rotateX = useSpring(py, { stiffness: 120, damping: 20 });
+
+  const onPointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    if (calm || e.pointerType !== "mouse") return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const nx = (e.clientX - rect.left) / rect.width - 0.5;
+    const ny = (e.clientY - rect.top) / rect.height - 0.5;
+    px.set(nx * 12);
+    py.set(-ny * 9);
+  };
+
+  const onPointerLeave = () => {
+    px.set(0);
+    py.set(0);
+  };
+
+  /* cinematic parallax: footage sinks and swells, copy drifts up */
   useEffect(() => {
     if (calm) return;
     const ctx = gsap.context(() => {
@@ -79,6 +104,8 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="home"
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
       className="relative flex min-h-[100svh] items-center overflow-hidden"
     >
       {/* film backdrop */}
@@ -99,10 +126,10 @@ export default function Hero() {
         </video>
       </div>
 
-      {/* light & atmosphere */}
+      {/* light and atmosphere */}
       <div className="absolute inset-0 bg-gradient-to-b from-night/80 via-night/40 to-night" />
       <div className="absolute inset-0 bg-gradient-to-r from-night/85 via-night/30 to-transparent" />
-      <div className="absolute inset-0 [background:radial-gradient(120%_90%_at_50%_10%,transparent_40%,rgba(10,10,12,0.85)_100%)]" />
+      <div className="absolute inset-0 [background:radial-gradient(120%_90%_at_50%_10%,transparent_40%,rgba(7,8,11,0.88)_100%)]" />
       {/* drifting gold haze */}
       <div
         aria-hidden
@@ -117,61 +144,69 @@ export default function Hero() {
         custom={1.5}
         className="eyebrow absolute right-8 top-1/2 hidden -translate-y-1/2 rotate-90 whitespace-nowrap text-mist! xl:block"
       >
-        Est. MMXII — SoHo, New York
+        Est. MMXII · SoHo, New York
       </motion.span>
 
       <div
         ref={contentRef}
-        className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-40 pt-36 sm:pb-44 lg:px-10"
+        className="perspective-deep relative z-10 mx-auto w-full max-w-7xl px-6 pb-40 pt-36 sm:pb-44 lg:px-10"
       >
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate={done ? "visible" : "hidden"}
-          custom={0.1}
-          className="eyebrow mb-7 flex items-center gap-4"
-        >
-          <span className="hairline-gold w-12" />
-          Luxury Grooming Atelier
-        </motion.p>
-
-        <h1 className="max-w-5xl font-display text-[13vw] leading-[1.02] text-cream sm:text-7xl lg:text-8xl">
-          <SplitWords text="Precision Cuts." start={done} delay={0.25} stagger={0.09} />
-          <br />
-          <SplitWords
-            text="Timeless Style."
-            start={done}
-            delay={0.55}
-            stagger={0.09}
-            wordClassName={() => "italic text-gold-gradient pr-2"}
-          />
-        </h1>
-
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate={done ? "visible" : "hidden"}
-          custom={0.95}
-          className="mt-7 max-w-xl text-base leading-relaxed text-fog sm:text-lg"
-        >
-          Experience luxury grooming at {site.name} — master barbers, hot-towel
-          rituals, and a chair you will not want to leave.
-        </motion.p>
-
         <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate={done ? "visible" : "hidden"}
-          custom={1.15}
-          className="mt-10 flex flex-wrap items-center gap-5"
+          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+          className="preserve-3d"
         >
-          <ButtonLink href="#book" onClick={goToBook}>
-            Book Your Appointment
-            <ArrowIcon />
-          </ButtonLink>
-          <ButtonLink href="#services" onClick={goToServices} variant="ghost">
-            Explore Services
-          </ButtonLink>
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate={done ? "visible" : "hidden"}
+            custom={0.1}
+            className="eyebrow mb-7 flex items-center gap-4"
+          >
+            <span className="hairline-gold w-12" />
+            Luxury Grooming Atelier
+          </motion.p>
+
+          <h1
+            className="max-w-5xl font-display text-[13vw] leading-[1.02] text-cream sm:text-7xl lg:text-8xl"
+            style={{ transform: "translateZ(70px)" }}
+          >
+            <SplitWords text="Precision Cuts." start={done} delay={0.25} stagger={0.09} />
+            <br />
+            <SplitWords
+              text="Timeless Style."
+              start={done}
+              delay={0.55}
+              stagger={0.09}
+              wordClassName={() => "italic text-gold-gradient pr-2"}
+            />
+          </h1>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate={done ? "visible" : "hidden"}
+            custom={0.95}
+            className="mt-7 max-w-xl text-base leading-relaxed text-fog sm:text-lg"
+          >
+            Experience luxury grooming at {site.name}, master barbers, hot towel
+            rituals, and a chair you will not want to leave.
+          </motion.p>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate={done ? "visible" : "hidden"}
+            custom={1.15}
+            className="mt-10 flex flex-wrap items-center gap-5"
+          >
+            <ButtonLink href="#book" onClick={goToBook}>
+              Book Your Appointment
+              <ArrowIcon />
+            </ButtonLink>
+            <ButtonLink href="#services" onClick={goToServices} variant="ghost">
+              Explore Services
+            </ButtonLink>
+          </motion.div>
         </motion.div>
       </div>
 

@@ -6,7 +6,7 @@ import gsap from "gsap";
 /**
  * Bespoke two-part cursor: an instant gold dot and a lazy silver ring.
  * The ring swells over interactive targets; elements may opt into a
- * label via `data-cursor="View"`. Fine pointers only — the pair stays
+ * label via `data-cursor="View"`. Fine pointers only, the pair stays
  * hidden until the effect confirms the environment supports it.
  */
 export default function Cursor() {

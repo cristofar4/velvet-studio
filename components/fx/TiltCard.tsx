@@ -1,6 +1,11 @@
 "use client";
 
-import { useRef, type ReactNode, type PointerEvent } from "react";
+import {
+  useRef,
+  type ReactNode,
+  type PointerEvent,
+  type ComponentPropsWithoutRef,
+} from "react";
 import {
   motion,
   useMotionValue,
@@ -8,19 +13,23 @@ import {
   useReducedMotion,
 } from "framer-motion";
 
+type TiltCardProps = {
+  children: ReactNode;
+  className?: string;
+  maxTilt?: number;
+} & Omit<ComponentPropsWithoutRef<typeof motion.div>, "ref" | "style" | "children">;
+
 /**
  * Subtle 3D tilt that follows the pointer, plus a cursor-tracked
  * sheen (via --mx/--my consumed by the `card-sheen` utility).
+ * Any extra props (data-cursor, aria-*, handlers) pass straight through.
  */
 export default function TiltCard({
   children,
   className,
   maxTilt = 7,
-}: {
-  children: ReactNode;
-  className?: string;
-  maxTilt?: number;
-}) {
+  ...rest
+}: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const calm = useReducedMotion();
 
@@ -58,6 +67,7 @@ export default function TiltCard({
         transformStyle: "preserve-3d",
       }}
       className={className}
+      {...rest}
     >
       {children}
     </motion.div>

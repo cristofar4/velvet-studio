@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
+import TiltCard from "@/components/fx/TiltCard";
 import { barbers, type Barber } from "@/lib/data";
 
 function SocialMini({ label }: { label: Barber["socials"][number]["label"] }) {
@@ -39,69 +40,72 @@ const cardVariants = {
 
 function BarberCard({ barber, index }: { barber: Barber; index: number }) {
   return (
-    <motion.article
+    <motion.div
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-10% 0px" }}
       custom={index}
-      className="group relative overflow-hidden rounded-3xl border border-line bg-onyx shadow-card transition-colors duration-500 hover:border-gold/40"
-      data-cursor="Meet"
     >
-      <div className="relative aspect-[3/4] overflow-hidden">
-        <Image
-          src={barber.image}
-          alt={`${barber.name} — ${barber.role} at Velvet Fade Studio`}
-          fill
-          sizes="(min-width: 1024px) 24vw, (min-width: 640px) 46vw, 92vw"
-          className="object-cover grayscale-[0.55] transition-all duration-[1.1s] ease-out group-hover:scale-[1.08] group-hover:grayscale-0"
-        />
-        {/* rising veil */}
-        <div className="absolute inset-0 bg-gradient-to-t from-night via-night/25 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
-        <div className="absolute inset-0 translate-y-2/3 bg-gradient-to-t from-night via-night/70 to-transparent transition-transform duration-700 ease-out group-hover:translate-y-1/3" />
+      <TiltCard maxTilt={9} className="group h-full" data-cursor="Meet">
+        <article className="relative overflow-hidden rounded-3xl border border-line bg-onyx shadow-card transition-colors duration-500 group-hover:border-gold/40">
+          <div className="relative aspect-[3/4] overflow-hidden">
+            <Image
+              src={barber.image}
+              alt={`${barber.name}, ${barber.role} at Velvet Fade Studio`}
+              fill
+              quality={90}
+              sizes="(min-width: 1024px) 24vw, (min-width: 640px) 46vw, 92vw"
+              className="object-cover grayscale-[0.5] transition-all duration-[1.1s] ease-out group-hover:scale-[1.08] group-hover:grayscale-0"
+            />
+            {/* rising veil */}
+            <div className="absolute inset-0 bg-gradient-to-t from-night via-night/25 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="absolute inset-0 translate-y-2/3 bg-gradient-to-t from-night via-night/70 to-transparent transition-transform duration-700 ease-out group-hover:translate-y-1/3" />
 
-        {/* years chip */}
-        <span className="absolute right-4 top-4 rounded-full border border-line bg-night/60 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-silver backdrop-blur transition-colors duration-500 group-hover:border-gold/50 group-hover:text-champagne">
-          {barber.years} yrs
-        </span>
+            {/* years chip */}
+            <span className="absolute right-4 top-4 rounded-full border border-line bg-night/60 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-silver backdrop-blur transition-colors duration-500 group-hover:border-gold/50 group-hover:text-champagne">
+              {barber.years} yrs
+            </span>
 
-        {/* identity + reveal */}
-        <div className="absolute inset-x-0 bottom-0 p-6">
-          <p className="eyebrow mb-1.5 text-[10px]!">{barber.role}</p>
-          <h3 className="font-display text-2xl text-cream transition-colors duration-300 group-hover:text-champagne">
-            {barber.name}
-          </h3>
+            {/* identity and reveal */}
+            <div className="absolute inset-x-0 bottom-0 p-6">
+              <p className="eyebrow mb-1.5 text-[10px]!">{barber.role}</p>
+              <h3 className="font-display text-2xl text-cream transition-colors duration-300 group-hover:text-champagne">
+                {barber.name}
+              </h3>
 
-          <div className="mt-3 max-h-0 overflow-hidden opacity-0 transition-all duration-700 ease-out group-hover:max-h-44 group-hover:opacity-100">
-            <p className="text-xs leading-relaxed text-fog">{barber.bio}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {barber.specialties.map((s) => (
-                <span
-                  key={s}
-                  className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-champagne"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-            <div className="mt-4 flex gap-2.5">
-              {barber.socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${barber.name} on ${s.label}`}
-                  className="flex size-8 items-center justify-center rounded-full border border-line text-silver transition-all duration-300 hover:border-gold/70 hover:bg-gold hover:text-night"
-                >
-                  <SocialMini label={s.label} />
-                </a>
-              ))}
+              <div className="mt-3 max-h-0 overflow-hidden opacity-0 transition-all duration-700 ease-out group-hover:max-h-44 group-hover:opacity-100">
+                <p className="text-xs leading-relaxed text-fog">{barber.bio}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {barber.specialties.map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-champagne"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-4 flex gap-2.5">
+                  {barber.socials.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${barber.name} on ${s.label}`}
+                      className="flex size-8 items-center justify-center rounded-full border border-line text-silver transition-all duration-300 hover:border-gold/70 hover:bg-gold hover:text-night"
+                    >
+                      <SocialMini label={s.label} />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </motion.article>
+        </article>
+      </TiltCard>
+    </motion.div>
   );
 }
 
