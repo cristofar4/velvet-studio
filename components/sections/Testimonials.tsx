@@ -24,8 +24,8 @@ function Stars({ rating }: { rating: number }) {
           >
             <defs>
               <linearGradient id={`star-${i}-${fill}`}>
-                <stop offset={`${fill * 100}%`} stopColor="#d3b178" />
-                <stop offset={`${fill * 100}%`} stopColor="rgba(244,242,236,0.18)" />
+                <stop offset={`${fill * 100}%`} stopColor="#ffffff" />
+                <stop offset={`${fill * 100}%`} stopColor="rgba(255,255,255,0.18)" />
               </linearGradient>
             </defs>
             <path

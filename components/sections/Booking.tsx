@@ -153,8 +153,8 @@ function SuccessModal({
             />
             <defs>
               <linearGradient id="ring-gold" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#f1e3bf" />
-                <stop offset="100%" stopColor="#b18d57" />
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="100%" stopColor="#6b6b72" />
               </linearGradient>
             </defs>
           </motion.svg>
@@ -162,7 +162,7 @@ function SuccessModal({
             <motion.path
               d="M6 19l8 8L30 9"
               fill="none"
-              stroke="#f1e3bf"
+              stroke="#ffffff"
               strokeWidth="2.6"
               strokeLinecap="round"
               strokeLinejoin="round"

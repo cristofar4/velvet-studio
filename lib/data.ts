@@ -66,8 +66,8 @@ export const about = {
     { title: "Ritual", copy: "Hot towels, slow hands, zero rush. Every visit is theatre." },
     { title: "Experience", copy: "Vinyl on the deck, single origin espresso, velvet chairs." },
   ],
-  imagePrimary: { src: pexels(8218487, 1600), alt: "Velvet Fade Studio lounge with leather chairs and warm brass lighting" },
-  imageSecondary: { src: pexels(3998417, 1200), alt: "Master barber sculpting a client's beard line" },
+  imagePrimary: { src: pexels(8218487, 1800), alt: "Velvet Fade Studio interior with classic chairs and tall mirrors" },
+  imageSecondary: { src: pexels(897262, 1300), alt: "Straight razor passing cleanly along a client's jaw" },
   quote: "A fade should disappear like smoke, you never see where it ends.",
   quoteBy: "Marcus Cole, Founder",
 };
@@ -94,7 +94,7 @@ export const services: Service[] = [
     price: 55,
     duration: "45 min",
     features: ["Consultation and mapping", "Straight razor edge up", "Styling and product lesson"],
-    image: pexels(15659486, 1200),
+    image: pexels(15659486, 1300),
   },
   {
     id: "beard-sculpting",
@@ -105,7 +105,7 @@ export const services: Service[] = [
     price: 40,
     duration: "30 min",
     features: ["Line architecture", "Cedarwood oil treatment", "Cold towel finish"],
-    image: pexels(3998417, 1200),
+    image: pexels(6007400, 1300),
   },
   {
     id: "hot-towel-shave",
@@ -116,7 +116,7 @@ export const services: Service[] = [
     price: 65,
     duration: "50 min",
     features: ["Triple towel prep", "Hand honed razor", "Aftershave massage"],
-    image: pexels(6007400, 1200),
+    image: pexels(14034429, 1300),
   },
   {
     id: "wash-styling",
@@ -127,7 +127,7 @@ export const services: Service[] = [
     price: 35,
     duration: "30 min",
     features: ["Scalp massage", "Steam infused wash", "Editorial finish"],
-    image: pexels(33448217, 1200),
+    image: pexels(33448217, 1300),
   },
   {
     id: "vip-package",
@@ -138,7 +138,7 @@ export const services: Service[] = [
     price: 150,
     duration: "120 min",
     features: ["All four rituals", "Private lounge seat", "Take home product kit"],
-    image: pexels(7518728, 1200),
+    image: pexels(7518728, 1300),
     featured: true,
   },
 ];
@@ -162,7 +162,7 @@ export const barbers: Barber[] = [
     years: 14,
     bio: "Trained in London's Savile Row barber houses before bringing the craft home to SoHo.",
     specialties: ["Skin Fades", "Scissor Work"],
-    image: pexels(18483778, 1200),
+    image: pexels(18483778, 1300),
     socials: [
       { label: "Instagram", href: "https://instagram.com" },
       { label: "X", href: "https://x.com" },
@@ -175,7 +175,7 @@ export const barbers: Barber[] = [
     years: 11,
     bio: "Two time national shave champion. His straight razor work is booked out three weeks deep.",
     specialties: ["Royal Shaves", "Beard Design"],
-    image: pexels(32037672, 1200),
+    image: pexels(32037672, 1300),
     socials: [
       { label: "Instagram", href: "https://instagram.com" },
       { label: "TikTok", href: "https://tiktok.com" },
@@ -188,7 +188,7 @@ export const barbers: Barber[] = [
     years: 9,
     bio: "Sculpts coils, waves and freestyle patterns, the studio's quiet virtuoso of texture.",
     specialties: ["Textured Crops", "Freestyle Design"],
-    image: pexels(13345951, 1200),
+    image: pexels(13345951, 1300),
     socials: [
       { label: "Instagram", href: "https://instagram.com" },
       { label: "X", href: "https://x.com" },
@@ -201,7 +201,7 @@ export const barbers: Barber[] = [
     years: 8,
     bio: "Old school discipline, editorial eye. Leo finishes every cut like it is headed to a runway.",
     specialties: ["Pompadours", "Executive Cuts"],
-    image: pexels(7781848, 1200),
+    image: pexels(7781848, 1300),
     socials: [
       { label: "Instagram", href: "https://instagram.com" },
       { label: "TikTok", href: "https://tiktok.com" },
@@ -219,19 +219,19 @@ export type GalleryItem = {
 
 const galleryDefs: Array<[number, string, string, string]> = [
   [1805600, "Clipper work mid fade under warm tungsten light", "Mid fade, chair one", "aspect-[3/4]"],
-  [897262, "Straight razor beard shave in progress", "The royal shave", "aspect-[4/5]"],
-  [8218487, "The studio floor in leather, brass and mirrors", "The floor at dusk", "aspect-[4/3]"],
-  [2035227, "Barber checking a client's line in the mirror", "Checking the line", "aspect-[3/4]"],
-  [1319461, "A hand honed straight razor, folded", "Tools of the house", "aspect-[4/3]"],
-  [19028071, "Laughter between barber and client mid cut", "Chair side stories", "aspect-[3/4]"],
-  [14034429, "An elder statesman receiving a chair shave", "Tradition, kept", "aspect-[4/5]"],
+  [3998391, "A barber on the floor between appointments", "The craftsman", "aspect-[4/5]"],
+  [18483774, "A master standing beside his reserved chair", "Chair, reserved", "aspect-[4/3]"],
+  [1319461, "A hand honed straight razor, folded", "Tools of the house", "aspect-[3/4]"],
+  [19028071, "Laughter between barber and client mid cut", "Chair side stories", "aspect-[4/3]"],
+  [11793730, "A wall of clippers, every guard in its place", "Instruments", "aspect-[3/4]"],
+  [2014808, "A straight razor passing along the jaw", "Clean lines", "aspect-[4/5]"],
   [12706272, "Finished fade and sculpted beard, detail shot", "The finish", "aspect-[3/4]"],
   [2318055, "Guests waiting on the lounge bench", "The lounge", "aspect-[4/3]"],
   [17784004, "Scissor over comb precision at the crown", "Scissor discipline", "aspect-[3/4]"],
 ];
 
 export const gallery: GalleryItem[] = galleryDefs.map(([id, alt, caption, ratio]) => ({
-  src: pexels(id, 1000),
+  src: pexels(id, 1100),
   full: pexels(id, 2000),
   alt,
   caption,

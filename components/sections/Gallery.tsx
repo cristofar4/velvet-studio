@@ -66,6 +66,7 @@ function Lightbox({
           src={item.full}
           alt={item.alt}
           fill
+          quality={95}
           sizes="92vw"
           className="rounded-2xl object-contain"
           priority
@@ -156,7 +157,7 @@ export default function Gallery() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  quality={88}
+                  quality={92}
                   sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
                   className="object-cover transition-transform duration-[1.3s] ease-out group-hover:scale-110"
                 />
